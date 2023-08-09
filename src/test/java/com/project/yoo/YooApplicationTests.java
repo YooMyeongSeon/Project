@@ -1,0 +1,13 @@
+package com.project.yoo;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class YooApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
