@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+<body>
+	<form th:action="@{/logout}" method="POST">
+		<section>
+			<div><p th:text="${session['SPRING_SECURITY_CONTEXT'].authentication.principal.getUserRealName}"></p></div>
+			<input type="submit" value="로그아웃"></section>
+	</form>
+</body>
+<script>
+</script>

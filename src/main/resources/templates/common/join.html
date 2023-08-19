@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{common.join}"></title>
+    <style>
+		* {margin: 0; padding: 0;}
+		body {width: 100; height: 100%; text-align: center;}
+		section {min-width: 375px; max-width: 420px; padding-top: 50px; margin: 0 auto;}
+	</style>
+</head>
+<body>
+	<form th:action="@{/public/join}" method="post" id="join">
+		<section>
+			<div><p th:text="#{common.join}"></p></div>
+			<div><label th:text="#{common.email}"></label><input type="text" name="userEmail" id="userEmail" th:placeholder="#{common.emailCheck}"></div>
+			<div><label th:text="#{common.password}"></label><input type="password" name="userPw" id="userPw" th:placeholder="#{common.passwordCheck}"></div>
+			<div><label th:text="#{common.confirmPassword}"></label><input type="password" name="confirmPassword" id="confirmPassword" th:placeholder="#{common.confirmPasswordCheck}"></div>
+			<div><label th:text="#{common.name}"></label><input type="text" name="userName" id="userName" th:placeholder="#{common.nameCheck}"></div>
+			<div><input type="button" th:value="#{common.joinCheck}" onclick="joinCheck()"></div>
+		</section>
+	</form>
+</body>
+<script>
+	function joinCheck() {
+		if (document.getElementById("userEmail").value == "") {
+			alert('[[#{common.emailCheck}]]');
+			document.getElementById("userEmail").focus();
+		} else if(document.getElementById("userPw").value == "") {
+			alert('[[#{common.passwordCheck}]]');
+			document.getElementById("userPw").focus();
+		} else if(document.getElementById("confirmPassword").value == "") {
+			alert('[[#{common.confirmPasswordCheck}]]');
+			document.getElementById("confirmPassword").focus();
+		} else if(document.getElementById("userPw").value != document.getElementById("confirmPassword").value) {
+			alert('[[#{common.passwordNotMatch}]]');
+			
+			document.getElementById("userPw").value = "";
+			document.getElementById("confirmPassword").value = "";
+			
+			document.getElementById("userPw").focus();
+		} else if(document.getElementById("userName").value == "") {
+			alert('[[#{common.nameCheck}]]');
+			document.getElementById("userName").focus();
+		} else {
+			document.getElementById("join").submit();
+		}
+	}
+</script>

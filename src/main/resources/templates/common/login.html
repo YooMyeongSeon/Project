@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{common.login}"></title>
+    <style>
+		body {width: 100; height: 100%; text-align: center;}
+		section {min-width: 375px; max-width: 420px; padding-top: 50px; margin: 0 auto;}
+	</style>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+</head>
+<body>
+	<form th:action="@{/login}" method="post" id="login">
+		<section>
+			<div><p th:text="#{common.login}"></p></div>
+			<div><label th:text="#{common.email}"></label><input type="text" name="username" id="userEmail" th:placeholder="#{common.emailCheck}"></div>
+			<div><label th:text="#{common.password}"></label><input type="password" name="password" id="userPw" th:placeholder="#{common.passwordCheck}"></div>
+			<div><input type="button" th:value="#{common.login}" onclick="loginCheck()"></div> 
+			<div><a href="public/join"><p th:text="#{common.join}"></p></a></div>
+		</section>
+	</form>
+</body>
+<script>
+	function loginCheck() {
+		if (document.getElementById("userEmail").value == "") {
+			alert('[[#{common.emailCheck}]]');
+			document.getElementById("userEmail").focus();
+		} else if(document.getElementById("userPw").value == "") {
+			alert('[[#{common.passwordCheck}]]');
+			document.getElementById("userPw").focus();
+		} else {
+			document.getElementById("login").submit();
+		}
+	}
+	
+</script>
